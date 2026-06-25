@@ -1,9 +1,14 @@
 const express = require ("express")
+const cookieParser = require("cookie-parser")
+
 
 const app = express()
 
 // this middleware used to initiate request to the body
 app.use(express.json())
+
+// this middleware used to 
+app.use(cookieParser())
 
 // auth route ko call krenge 
 // requires all the routes here...
