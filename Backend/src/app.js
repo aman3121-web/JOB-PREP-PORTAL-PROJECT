@@ -1,5 +1,6 @@
 const express = require ("express")
 const cookieParser = require("cookie-parser")
+const cors = require("cors")
 
 
 const app = express()
@@ -9,6 +10,12 @@ app.use(express.json())
 
 // this middleware used to 
 app.use(cookieParser())
+
+// cors middleware
+app.use(cors({
+  origin:"http://localhost:5173",
+  credentials:true
+}))
 
 // auth route ko call krenge 
 // requires all the routes here...
