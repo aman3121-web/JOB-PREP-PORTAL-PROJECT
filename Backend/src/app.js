@@ -20,12 +20,12 @@ app.use(cors({
 // auth route ko call krenge 
 // requires all the routes here...
 const authRouter = require("./routes/auth.routes")
-
+const interviewRouter = require("./routes/interview.routes")
 
 
 // ab middleware use krenge jo authrouter ki prefix decide krega. agr hume authrouter ko use krna h to ye prefix use krna pdega 
 // using all the routes here...
 app.use("/api/auth", authRouter)
-
+app.use("/api/interview", interviewRouter)
 
 module.exports = app
