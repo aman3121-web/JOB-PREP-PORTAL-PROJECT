@@ -17,13 +17,23 @@ app.use(cookieParser())
 //   credentials:true
 // }))
 
+const allowedOrigins = [
+  "http://localhost:5173",
+  "https://job-prep-portal-project.vercel.app",
+  "https://job-prep-portal-project-git-main.vercel.app"
+];
+
 app.use(
   cors({
-    origin: [
-      "http://localhost:5173",
-      "https://job-prep-portal-project.vercel.app/"
-    ],
-    credentials: true
+    origin: (origin, callback) => {
+      if (!origin || allowedOrigins.includes(origin)) {
+        callback(null, true);
+        return;
+      }
+
+      callback(new Error("Not allowed by CORS"));
+    },
+    credentials: true,
   })
 );
 
