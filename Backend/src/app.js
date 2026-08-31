@@ -12,10 +12,20 @@ app.use(express.json())
 app.use(cookieParser())
 
 // cors middleware
-app.use(cors({
-  origin:"http://localhost:5173",
-  credentials:true
-}))
+// app.use(cors({
+//   origin:"http://localhost:5173",
+//   credentials:true
+// }))
+
+app.use(
+  cors({
+    origin: [
+      "http://localhost:5173",
+      "https://job-prep-portal-project.vercel.app/"
+    ],
+    credentials: true
+  })
+);
 
 // auth route ko call krenge 
 // requires all the routes here...
